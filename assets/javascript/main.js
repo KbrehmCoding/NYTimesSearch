@@ -8,8 +8,12 @@ console.log(queryUrl);
   $.ajax({
     url: queryUrl,
     method: 'GET',
-  }).done(function(result) {
-    console.log(result);
+  }).done(function(response) {
+    for (var i = 0; i < response.response.docs.length; i++){
+        console.log("Headline: "+response.response.docs[i].headline.main);
+        console.log("Summary: "+response.response.docs[i].snippet);
+        console.log("URL: "+response.response.docs[i].web_url);
+    }
   }).fail(function(err) {
     throw err;
   });
